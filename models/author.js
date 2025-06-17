@@ -13,24 +13,28 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Author.init({
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      allowNull: false
+  Author.init(
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false,
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      bio: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
-    bio: {
-      type: DataTypes.STRING,
-      allowNull: false
+    {
+      sequelize,
+      modelName: "Author",
     }
-  }, {
-    sequelize,
-    modelName: 'Author',
-  });
+  );
   return Author;
 };
