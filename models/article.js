@@ -15,7 +15,11 @@ module.exports = (sequelize, DataTypes) => {
           name: "AuthorId",
           field: "id",
         },
-      });
+      })
+      this.belongsToMany(models.Tag, {
+        foreignKey: "articleId",
+        through: "ArticleTags"
+      })
     }
   }
 Article.init(
